@@ -1,9 +1,4 @@
-import {
-  FiBriefcase,
-  FiCode,
-  FiMonitor,
-  FiZap,
-} from "react-icons/fi"
+import { FiCode, FiMonitor, FiZap } from "react-icons/fi"
 import { FeatureCard } from "../FeatureCard"
 
 interface HeroProfileProps {
@@ -12,98 +7,67 @@ interface HeroProfileProps {
 
 export function HeroProfile({ stack }: HeroProfileProps) {
   return (
-    <section className="flex min-h-[72vh] items-center">
-      <div className="grid w-full items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <p className="mb-5 text-xs font-medium tracking-[0.28em] text-blue-200/80 uppercase">
-            Front-end • React • TypeScript
+    <section className="flex min-h-screen items-center pt-20">
+      <div className="w-full space-y-20">
+        {/* Hero Text */}
+        <div className="max-w-4xl space-y-6">
+          <p className="text-sm font-medium tracking-wide text-blue-400">
+            Desenvolvedor Front-end
           </p>
 
-          <h1 className="max-w-xl text-4xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-            Transformo ideias em experiências digitais que funcionam na prática.
+          <h1 className="text-balance text-5xl font-bold leading-tight tracking-tight text-slate-100 sm:text-6xl lg:text-7xl">
+            Transformo ideias em experiências digitais que <span className="text-blue-400">funcionam</span> na prática.
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
-            Sou desenvolvedor front-end focado em interfaces limpas, responsivas e bem pensadas,
-            com atenção para desempenho, clareza e impacto real para quem usa o produto.
+          <p className="max-w-2xl text-lg leading-relaxed text-slate-400">
+            Sou desenvolvedor front-end focado em interfaces limpas, responsivas e bem pensadas, com atenção para desempenho, clareza e impacto real.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          {/* Buttons */}
+          <div className="flex flex-wrap gap-4 pt-4">
             <a
               href="#projetos"
-              className="inline-flex items-center justify-center rounded-full bg-blue-500 px-5 py-3 text-sm font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-blue-400"
+              className="rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition duration-300 hover:bg-blue-600"
             >
               Ver projetos
             </a>
             <a
               href="#sobre"
-              className="inline-flex items-center justify-center rounded-full border border-blue-400/30 bg-blue-500/5 px-5 py-3 text-sm font-medium text-blue-100 transition duration-200 hover:-translate-y-0.5 hover:border-blue-300/50 hover:bg-blue-500/10"
+              className="rounded-lg border border-slate-600 px-6 py-3 text-sm font-medium text-slate-300 transition duration-300 hover:border-slate-500 hover:text-slate-100 hover:bg-slate-900/50"
             >
               Sobre mim
             </a>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-6 text-sm text-slate-300">
+          {/* Stats */}
+          <div className="flex flex-wrap gap-8 pt-12 border-t border-slate-700/50">
             <div>
-              <span className="block text-2xl font-semibold text-white">+3</span>
-              anos de prática
+              <p className="text-3xl font-bold text-slate-100">+3</p>
+              <p className="mt-1 text-sm text-slate-400">anos de prática</p>
             </div>
             <div>
-              <span className="block text-2xl font-semibold text-white">18+</span>
-              projetos entregues
+              <p className="text-3xl font-bold text-slate-100">18+</p>
+              <p className="mt-1 text-sm text-slate-400">projetos entregues</p>
             </div>
             <div>
-              <span className="block text-2xl font-semibold text-white">UX</span>
-              foco constante
+              <p className="text-3xl font-bold text-blue-400">UX</p>
+              <p className="mt-1 text-sm text-slate-400">foco constante</p>
             </div>
           </div>
         </div>
 
-        <div className="rounded-[28px] border border-blue-400/20 bg-linear-to-br from-slate-900 via-slate-950 to-slate-900 p-6 shadow-[0_30px_80px_rgba(6,18,39,0.7)]">
-          <div className="rounded-2xl border border-blue-400/10 bg-slate-900/80 p-5">
-            <div className="mb-6 flex items-center justify-between">
-              <span className="text-xs font-medium tracking-[0.22em] text-slate-400 uppercase">
-                Perfil
+        {/* Stack Section */}
+        <div className="max-w-2xl space-y-4">
+          <p className="text-sm font-medium text-slate-400">Stack principal</p>
+          <div className="flex flex-wrap gap-2">
+            {stack.map((item) => (
+              <span
+                key={item}
+                className="rounded-lg border border-slate-700/50 bg-slate-900/30 px-4 py-2 text-sm text-slate-300 transition duration-300 hover:border-blue-500/50 hover:bg-slate-900/50"
+              >
+                {item}
               </span>
-              <span className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-2 py-1 text-[10px] font-medium text-emerald-300">
-                Disponível
-              </span>
-            </div>
-
-            <div className="space-y-4">
-              <div className="rounded-xl border border-blue-400/10 bg-slate-800/70 p-4 transition duration-200 hover:border-blue-300/30 hover:bg-slate-800">
-                <div className="mb-3 flex items-center gap-3 text-blue-300">
-                  <FiBriefcase className="text-lg" />
-                  <p className="text-sm text-slate-400">Especialidade</p>
-                </div>
-                <p className="mt-2 text-xl font-medium text-white">Interfaces modernas</p>
-              </div>
-
-              <div className="rounded-xl border border-blue-400/10 bg-slate-800/70 p-4 transition duration-200 hover:border-blue-300/30 hover:bg-slate-800">
-                <div className="mb-3 flex items-center gap-3 text-blue-300">
-                  <FiZap className="text-lg" />
-                  <p className="text-sm text-slate-400">Abordagem</p>
-                </div>
-                <p className="mt-2 text-xl font-medium text-white">Rápida, clara, escalável</p>
-              </div>
-
-              <div className="rounded-xl border border-blue-400/10 bg-slate-800/70 p-4 transition duration-200 hover:border-blue-300/30 hover:bg-slate-800">
-                <div className="mb-3 flex items-center gap-3 text-blue-300">
-                  <FiCode className="text-lg" />
-                  <p className="text-sm text-slate-400">Stack</p>
-                </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {stack.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-blue-400/20 bg-slate-950 px-2.5 py-1 text-[11px] text-blue-100"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -134,25 +98,25 @@ export function Features() {
   ]
 
   return (
-    <section id="sobre" className="mt-10 py-12">
-      <div className="mb-10 max-w-2xl">
-        <p className="mb-3 text-xs font-medium tracking-[0.26em] text-blue-200/80 uppercase">
-          O que entrego
-        </p>
-        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          Soluções que equilibram estética, clareza e resultado.
-        </h2>
-      </div>
+    <section id="sobre" className="py-24 lg:py-32">
+      <div className="space-y-16">
+        <div className="max-w-2xl space-y-4">
+          <p className="text-sm font-medium tracking-wide text-blue-400">O que entrego</p>
+          <h2 className="text-4xl font-bold leading-tight tracking-tight text-slate-100">
+            Soluções que equilibram estética, clareza e resultado.
+          </h2>
+        </div>
 
-      <div className="grid gap-5 md:grid-cols-3">
-        {highlights.map(({ title, description, icon }) => (
-          <FeatureCard
-            key={title}
-            title={title}
-            description={description}
-            icon={icon}
-          />
-        ))}
+        <div className="grid gap-12 md:grid-cols-3">
+          {highlights.map(({ title, description, icon }) => (
+            <FeatureCard
+              key={title}
+              title={title}
+              description={description}
+              icon={icon}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

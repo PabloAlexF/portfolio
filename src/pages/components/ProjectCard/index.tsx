@@ -4,34 +4,58 @@ interface ProjectCardProps {
   title: string
   description: string
   tags: string[]
+  index?: number
 }
 
-export function ProjectCard({ title, description, tags }: ProjectCardProps) {
-  return (
-    <article className="group flex h-full flex-col rounded-2xl border border-blue-400/10 bg-slate-900/80 p-6 transition duration-200 hover:-translate-y-1 hover:border-blue-300/20 hover:bg-slate-900">
-      <div className="mb-5 h-36 rounded-xl bg-linear-to-br from-slate-800 via-slate-900 to-blue-950/40 ring-1 ring-blue-300/10" />
+export function ProjectCard({ title, description, tags, index = 0 }: ProjectCardProps) {
+  const isEven = index % 2 === 0
 
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full border border-blue-400/20 bg-slate-950 px-2.5 py-1 text-[10px] font-medium tracking-[0.08em] text-blue-100 uppercase"
-          >
-            {tag}
-          </span>
-        ))}
+  return (
+    <div className={`grid items-center gap-8 lg:gap-12 lg:grid-cols-2 py-12 lg:py-20 border-b border-slate-800/50 last:border-b-0`}>
+      {/* Imagem */}
+      <div className={isEven ? "lg:order-1" : "lg:order-2"}>
+        <div className="aspect-video rounded-lg bg-linear-to-br from-slate-800 to-slate-900 ring-1 ring-slate-700/50 overflow-hidden">
+          <div className="w-full h-full flex items-center justify-center text-slate-600">
+            <div className="text-center">
+              <p className="text-sm">Screenshot do projeto</p>
+              <p className="text-xs text-slate-700 mt-2">{title}</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h3 className="mt-5 text-xl font-medium text-white">{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-slate-300">{description}</p>
+      {/* Conteúdo */}
+      <div className={isEven ? "lg:order-2" : "lg:order-1"}>
+        <div className="space-y-4">
+          <div className="space-y-3">
+            <h3 className="text-2xl font-bold text-slate-100">{title}</h3>
+            <p className="text-lg leading-relaxed text-slate-400">{description}</p>
+          </div>
 
-      <a
-        href="#contato"
-        className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-blue-200 transition group-hover:text-white"
-      >
-        Solicitar detalhes
-        <FiArrowRight className="text-base" />
-      </a>
-    </article>
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 pt-4">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-slate-800/50 px-3 py-1 text-xs font-medium text-slate-300 border border-slate-700/50"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="pt-6">
+            <a
+              href="#contato"
+              className="inline-flex items-center gap-2 text-blue-400 font-medium text-sm transition duration-300 hover:gap-3 hover:text-blue-300"
+            >
+              Solicitar detalhes
+              <FiArrowRight className="text-base" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -1,7 +1,7 @@
+import { Header } from "../components/Header"
 import { HeroProfile, Features } from "../components/Hero"
 import { ProjectCard } from "../components/ProjectCard"
 import { CTA } from "../components/CTA"
-import { SectionTitle } from "../components/SectionTitle"
 
 export function Home() {
   const stack = ["React", "TypeScript", "Tailwind", "Vite", "Git", "UX"]
@@ -27,20 +27,23 @@ export function Home() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
 
-      <main id="inicio" className="mx-auto max-w-6xl px-6 pb-20 pt-10 sm:pt-16">
+      <main id="inicio" className="mx-auto max-w-7xl px-6 pt-32 pb-20 lg:px-8 lg:pt-40">
         <HeroProfile stack={stack} />
         <Features />
 
-        <section id="projetos" className="py-12">
-          <SectionTitle
-            label="Projetos em destaque"
-            title="Trabalho com foco em comunicação visual e funcionalidade."
-          />
+        <section id="projetos" className="py-24 lg:py-32">
+          <div className="space-y-4 mb-16">
+            <p className="text-sm font-medium tracking-wide text-blue-400">Projetos</p>
+            <h2 className="text-4xl font-bold leading-tight tracking-tight text-slate-100">
+              Trabalho com foco em comunicação visual e funcionalidade.
+            </h2>
+          </div>
 
-          <div className="grid gap-5 lg:grid-cols-3">
-            {projects.map((project) => (
+          <div>
+            {projects.map((project, index) => (
               <ProjectCard
                 key={project.title}
+                index={index}
                 title={project.title}
                 description={project.description}
                 tags={project.tags}

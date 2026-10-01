@@ -2,22 +2,22 @@ import { FiGithub, FiMail } from "react-icons/fi"
 
 export function CTA() {
   return (
-    <section id="contato" className="py-16">
-      <div className="rounded-[28px] border border-blue-400/10 bg-slate-900/80 p-8 text-center sm:p-12">
-        <p className="text-xs font-medium tracking-[0.26em] text-blue-200/80 uppercase">
-          Contato
-        </p>
-        <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          Vamos construir algo claro, útil e bonito.
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-slate-300">
-          Se você busca alguém que entenda interfaces, experiência e qualidade de entrega, pode me chamar.
-        </p>
+    <section id="contato" className="py-24 lg:py-32">
+      <div className="space-y-8 text-center">
+        <div className="space-y-4">
+          <p className="text-sm font-medium text-blue-400">Entre em contato</p>
+          <h2 className="text-4xl font-bold leading-tight text-slate-100 sm:text-5xl">
+            Vamos construir algo incrível.
+          </h2>
+          <p className="mx-auto max-w-2xl text-lg text-slate-400">
+            Se você busca um desenvolvedor front-end que entende de design, performance e qualidade, vamos conversar.
+          </p>
+        </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
           <a
             href="mailto:seuemail@email.com"
-            className="inline-flex items-center gap-2 rounded-full bg-blue-500 px-5 py-3 text-sm font-medium text-white transition hover:bg-blue-400"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition duration-300 hover:bg-blue-600"
           >
             <FiMail className="text-base" />
             seuemail@email.com
@@ -26,7 +26,7 @@ export function CTA() {
             href="https://github.com"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/5 px-5 py-3 text-sm font-medium text-blue-100 transition hover:border-blue-300/50 hover:bg-blue-500/10"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 py-3 text-sm font-medium text-slate-300 transition duration-300 hover:border-slate-500 hover:text-slate-100 hover:bg-slate-900/50"
           >
             <FiGithub className="text-base" />
             GitHub
