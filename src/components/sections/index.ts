@@ -1,6 +1,5 @@
 export { Navbar } from './Navbar'
 export { Hero } from './Hero'
-export { Services } from './Services'
 export { Projects } from './Projects'
 export { TechStack } from './TechStack'
 export { About } from './About'

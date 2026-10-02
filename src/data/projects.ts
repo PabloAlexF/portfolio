@@ -2,36 +2,15 @@ import type { Project } from './types'
 
 export const projects: Project[] = [
   {
-    id: 'portfolio-profissional',
+    id: 'solidar-brasil',
     number: '01',
-    title: 'Portfólio profissional',
-    description:
-      'Estrutura clara para apresentar trabalho, processo e diferenciais de forma objetiva.',
-    tags: ['UI', 'Branding', 'Portfolio'],
-    metrics: 'LCP -40%',
-    demoUrl: '#',
-    codeUrl: '#',
-  },
-  {
-    id: 'dashboard-produto',
-    number: '02',
-    title: 'Dashboard de produto',
-    description:
-      'Visualização direta de métricas e dados com foco em produtividade e tomada de decisão.',
-    tags: ['Data', 'UX', 'React'],
-    metrics: '+25% conversão',
-    demoUrl: '#',
-    codeUrl: '#',
-  },
-  {
-    id: 'landing-page',
-    number: '03',
-    title: 'Landing page de conversão',
-    description:
-      'Mensagem forte, hierarquia visual simples e chamada para ação bem posicionada.',
-    tags: ['Marketing', 'Design', 'Performance'],
-    metrics: '+18% engagement',
-    demoUrl: '#',
-    codeUrl: '#',
+    title: 'SolidarBrasil',
+    description: 'Plataforma de solidariedade comunitária que conecta pessoas que precisam de ajuda com aquelas que podem ajudar.',
+    role: 'Front-end completo, integração com API Node.js e autenticação Firebase',
+    tags: ['React', 'Node.js', 'Firebase', 'CSS'],
+    // image: '/prints/solidar-brasil.png',
+    // TODO: adicionar print da interface quando disponível
+    image_alt: 'Interface da plataforma SolidarBrasil',
+    codeUrl: 'https://github.com/PabloAlexF/Solidar-bairro',
   },
 ]

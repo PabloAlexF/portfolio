@@ -1,9 +1,17 @@
 import type { StackItem } from './types'
 
 export const stack: StackItem[] = [
-  { name: 'React', icon: 'FaReact' },
-  { name: 'TypeScript', icon: 'SiTypescript' },
-  { name: 'Tailwind CSS', icon: 'SiTailwindcss' },
-  { name: 'Vite', icon: 'SiVite' },
-  { name: 'Git', icon: 'FaGitAlt' },
+  // Linguagens e frameworks
+  { name: 'React', icon: 'FaReact', category: 'frameworks' },
+  { name: 'TypeScript', icon: 'SiTypescript', category: 'frameworks' },
+  { name: 'JavaScript', icon: 'SiJavascript', category: 'frameworks' },
+  // Estilo
+  { name: 'Tailwind CSS', icon: 'SiTailwindcss', category: 'estilo' },
+  { name: 'HTML', icon: 'SiHtml5', category: 'estilo' },
+  { name: 'CSS', icon: 'SiCss', category: 'estilo' },
+  // Ferramentas
+  { name: 'Vite', icon: 'SiVite', category: 'ferramentas' },
+  { name: 'Git', icon: 'FaGitAlt', category: 'ferramentas' },
+  { name: 'GitHub', icon: 'FaGithub', category: 'ferramentas' },
+  { name: 'Figma', icon: 'FaFigma', category: 'ferramentas' },
 ]

@@ -1,8 +1,17 @@
 import {
   FaReact,
   FaGitAlt,
+  FaGithub,
+  FaFigma,
 } from 'react-icons/fa'
-import { SiTypescript, SiTailwindcss, SiVite } from 'react-icons/si'
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiVite,
+  SiJavascript,
+  SiHtml5,
+  SiCss,
+} from 'react-icons/si'
 import { Reveal } from '@/components/ui'
 import type { StackItem } from '@/data'
 
@@ -16,26 +25,47 @@ const IconMap = {
   SiTailwindcss,
   SiVite,
   FaGitAlt,
+  FaGithub,
+  FaFigma,
+  SiJavascript,
+  SiHtml5,
+  SiCss,
 } as const
 
-export function TechStack({
-  stack = [
-    { name: 'React', icon: 'FaReact' },
-    { name: 'TypeScript', icon: 'SiTypescript' },
-    { name: 'Tailwind CSS', icon: 'SiTailwindcss' },
-    { name: 'Vite', icon: 'SiVite' },
-    { name: 'Git', icon: 'FaGitAlt' },
-  ],
-}: TechStackProps) {
+const categoryLabels: Record<string, string> = {
+  frameworks: 'Linguagens e frameworks',
+  estilo: 'Estilo',
+  ferramentas: 'Ferramentas',
+}
+
+export function TechStack({ stack = [] }: TechStackProps) {
+  const categories = ['frameworks', 'estilo', 'ferramentas'] as const
+  const grouped = categories.map((cat) => ({
+    key: cat,
+    label: categoryLabels[cat],
+    items: stack.filter((s) => s.category === cat),
+  })).filter((g) => g.items.length > 0)
+
   return (
-    <section className="py-16 md:py-24 border-t border-slate-800">
+    <section id="stack" className="py-16 lg:py-20 scroll-mt-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
-          <div className="space-y-8">
-            <p className="text-sm font-medium text-slate-400">Stack principal</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-              {stack.map((item, index) => (
-                <TechStackItem key={item.name} item={item} delay={index * 50} />
+          <div className="space-y-10">
+            <div className="space-y-2">
+              <p className="text-sm sm:text-base font-medium tracking-wide text-blue-400">Stack</p>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-100">Tecnologias que uso no dia a dia.</h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {grouped.map(({ key, label, items }) => (
+                <div key={key} className="space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">{label}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {items.map((item, index) => (
+                      <TechChip key={item.name} item={item} delay={index * 40} />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -45,18 +75,14 @@ export function TechStack({
   )
 }
 
-function TechStackItem({ item, delay }: { item: StackItem; delay: number }) {
-  const Icon = item.icon ? (IconMap[item.icon as keyof typeof IconMap] || null) : null
+function TechChip({ item, delay }: { item: StackItem; delay: number }) {
+  const Icon = item.icon ? (IconMap[item.icon as keyof typeof IconMap] ?? null) : null
 
   return (
     <Reveal delay={delay}>
-      <div className="flex flex-col items-center gap-3 p-4 rounded-lg border border-slate-700/50 bg-slate-900/30 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:scale-105 group">
-        {Icon && (
-          <Icon className="text-2xl text-slate-400 group-hover:text-blue-400 transition-colors" />
-        )}
-        <span className="text-sm font-medium text-slate-300 text-center group-hover:text-slate-100 transition-colors">
-          {item.name}
-        </span>
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-700/50 bg-slate-900/30 text-sm font-medium text-slate-300 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 hover:scale-105 group">
+        {Icon && <Icon className="text-sm text-slate-400 group-hover:text-blue-400 transition-colors" />}
+        {item.name}
       </div>
     </Reveal>
   )

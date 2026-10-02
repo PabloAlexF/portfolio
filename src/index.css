@@ -6,25 +6,9 @@
   /* Brand Colors */
   --bg: #030712;
   --bg-rgb: 3, 7, 18;
-  --bg-soft: #0a0f1b;
-  --panel: #0f172a;
-  --panel-strong: #1e293b;
   --text: #f8fafc;
-  --text-soft: #cbd5e1;
-  --muted: #94a3b8;
   --primary: #3b82f6;
   --primary-rgb: 59, 130, 246;
-  --primary-soft: #60a5fa;
-  --secondary: #0ea5e9;
-  
-  /* Theme Vars */
-  --border: rgba(148, 163, 184, 0.08);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  --radius: 12px;
-  
-  /* Spotlight Effect */
-  --x: 0;
-  --y: 0;
 }
 
 * {
@@ -124,27 +108,3 @@ section {
   scroll-margin-top: 5rem;
 }
 
-/* Spotlight effect for service cards */
-.spotlight {
-  position: relative;
-  overflow: hidden;
-}
-
-.spotlight::before {
-  content: '';
-  position: absolute;
-  top: calc(var(--y, 0) * 1px);
-  left: calc(var(--x, 0) * 1px);
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.spotlight:hover::before {
-  opacity: 1;
-}

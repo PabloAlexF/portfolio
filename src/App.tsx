@@ -1,7 +1,6 @@
 import {
   Navbar,
   Hero,
-  Services,
   Projects,
   TechStack,
   About,
@@ -9,7 +8,7 @@ import {
   Footer,
 } from '@/components/sections'
 import { BackgroundDecor } from '@/components/ui'
-import { stack, projects } from '@/data'
+import { projects, stack } from '@/data'
 
 export function App() {
   return (
@@ -18,8 +17,7 @@ export function App() {
       <Navbar />
 
       <main className="pt-20">
-        <Hero stack={stack} />
-        <Services />
+        <Hero />
         <Projects projects={projects} />
         <TechStack stack={stack} />
         <About />

@@ -4,25 +4,23 @@ export function useScrollSpy(sectionIds: string[]) {
   const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100 // offset para navbar fixed
-
-      for (const id of sectionIds) {
-        const element = document.getElementById(id)
-        if (element) {
-          const { top, bottom } = element.getBoundingClientRect()
-          if (top <= 100 && bottom >= 100) {
-            setActiveId(id)
-            break
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id)
           }
         }
-      }
-    }
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Run once on mount
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
 
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => observer.disconnect()
   }, [sectionIds])
 
   return activeId

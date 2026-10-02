@@ -1,3 +1,2 @@
-export { BackgroundDecor, Reveal, CounterUp, AvailableBadge } from './ui'
-export { ProjectMockup } from './ProjectMockup'
+export { BackgroundDecor, Reveal, AvailableBadge } from './ui'
 export * from './sections'

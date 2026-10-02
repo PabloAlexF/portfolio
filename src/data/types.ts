@@ -1,13 +1,7 @@
 export interface StackItem {
   name: string
   icon?: string
-}
-
-export interface Service {
-  title: string
-  description: string
-  icon: string
-  emoji?: string
+  category: 'frameworks' | 'estilo' | 'ferramentas'
 }
 
 export interface Project {
@@ -15,22 +9,11 @@ export interface Project {
   number: string
   title: string
   description: string
+  role: string
   tags: string[]
   image?: string
   image_alt?: string
-  metrics: string
+  metrics?: string
   demoUrl?: string
   codeUrl?: string
-}
-
-export interface SocialLink {
-  name: string
-  url: string
-  icon: string
-  label: string
-}
-
-export interface NavLink {
-  name: string
-  href: string
 }
