@@ -1,39 +1,32 @@
-import { createBrowserRouter } from "react-router-dom"
-import { Home } from "./pages/Home"
-import { Sobre } from "./pages/Sobre"
-import { Contato } from "./pages/Contato"
-import { Projetos } from "./pages/Projetos"
-import { NotFound } from "./pages/NotFound"
+import {
+  Navbar,
+  Hero,
+  Services,
+  Projects,
+  TechStack,
+  About,
+  Contact,
+  Footer,
+} from '@/components/sections'
+import { BackgroundDecor } from '@/components/ui'
+import { stack, projects } from '@/data'
 
-import { Layout } from "./layout"
+export function App() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <BackgroundDecor />
+      <Navbar />
 
-const router = createBrowserRouter([
-    {
-      element: <Layout/>,
-      children: [
-    {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/sobre",
-      element: <Sobre />,
-    },
-    {
-      path: "/projetos",
-      element: <Projetos />,
-    },
-    {
-      path: "/contato",
-      element: <Contato />,
-    },
-    {
-      path: "*",
-      element: <NotFound />,
-    },
+      <main className="pt-20">
+        <Hero stack={stack} />
+        <Services />
+        <Projects projects={projects} />
+        <TechStack stack={stack} />
+        <About />
+        <Contact />
+      </main>
 
-      ]
-    }
-])
-
-export { router }
+      <Footer />
+    </div>
+  )
+}

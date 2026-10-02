@@ -1,4 +1,3 @@
-import { Header } from "../components/Header"
 import { HeroProfile, Features } from "../components/Hero"
 import { ProjectCard } from "../components/ProjectCard"
 import { CTA } from "../components/CTA"

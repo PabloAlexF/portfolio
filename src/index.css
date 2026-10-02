@@ -3,19 +3,28 @@
 :root {
   color-scheme: dark;
 
-  --bg: #050816;
-  --bg-soft: #0a1020;
+  /* Brand Colors */
+  --bg: #030712;
+  --bg-rgb: 3, 7, 18;
+  --bg-soft: #0a0f1b;
   --panel: #0f172a;
   --panel-strong: #1e293b;
   --text: #f8fafc;
   --text-soft: #cbd5e1;
   --muted: #94a3b8;
   --primary: #3b82f6;
+  --primary-rgb: 59, 130, 246;
   --primary-soft: #60a5fa;
   --secondary: #0ea5e9;
+  
+  /* Theme Vars */
   --border: rgba(148, 163, 184, 0.08);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   --radius: 12px;
+  
+  /* Spotlight Effect */
+  --x: 0;
+  --y: 0;
 }
 
 * {
@@ -73,12 +82,69 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Focus Visible */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* Smooth sections with scroll-mt */
+section {
+  scroll-margin-top: 5rem;
+}
+
+/* Spotlight effect for service cards */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--y, 0) * 1px);
+  left: calc(var(--x, 0) * 1px);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
 }
