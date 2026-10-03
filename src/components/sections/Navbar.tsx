@@ -29,7 +29,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         showBorder ? 'border-b border-slate-800/50' : 'border-b border-transparent'
       } bg-slate-950/80 backdrop-blur-md`}
     >
@@ -50,7 +50,7 @@ export function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-lg ${
                   isActive ? 'text-blue-400' : 'text-slate-400 hover:text-slate-300'
                 }`}
               >

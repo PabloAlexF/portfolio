@@ -1,4 +1,4 @@
-import { FiGithub, FiLinkedin, FiMessageCircle } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMessageCircle, FiCheck } from 'react-icons/fi'
 import { Reveal } from '@/components/ui'
 import { useState } from 'react'
 import { profile } from '@/data'
@@ -49,10 +49,14 @@ export function Contact() {
                   />
                   <button
                     onClick={handleCopyEmail}
-                    className="rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-700 active:scale-95 whitespace-nowrap focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
+                    className={`rounded-lg px-6 py-3 text-sm font-semibold text-white transition-[background-color,transform] duration-150 active:scale-95 whitespace-nowrap focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950 inline-flex items-center gap-2 ${
+                      copied ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-blue-600 hover:bg-blue-700'
+                    }`}
                     aria-label={copied ? 'E-mail copiado' : 'Copiar e-mail'}
+                    aria-live="polite"
                   >
-                    {copied ? '✓ Copiado!' : 'Copiar'}
+                    {copied ? <FiCheck className="text-base" /> : null}
+                    {copied ? 'Copiado!' : 'Copiar'}
                   </button>
                 </div>
               </div>

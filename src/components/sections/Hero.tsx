@@ -88,7 +88,7 @@ export function Hero() {
             <Reveal delay={200} className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={() => scrollToSection('projetos')}
-                className="group inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white transition-all duration-300 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/50 active:scale-95 focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
+                className="group inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white transition-[background-color,border-color,color,box-shadow,transform] duration-300 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/50 active:scale-95 focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
               >
                 Ver projetos
                 <FiArrowRight className="transition-transform group-hover:translate-x-1" />
@@ -96,7 +96,7 @@ export function Hero() {
               <a
                 href={profile.resumePath}
                 download
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-slate-300 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 active:scale-95 focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-slate-300 transition-[background-color,border-color,color,box-shadow,transform] duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 active:scale-95 focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
                 aria-label="Baixar currículo em PDF"
               >
                 <FiDownload className="text-base" />
@@ -109,7 +109,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   aria-label="Perfil no GitHub"
                   title="GitHub"
-                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
+                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-colors duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
                 >
                   <FiGithub className="text-lg" />
                 </a>
@@ -119,7 +119,7 @@ export function Hero() {
                   rel="noopener noreferrer"
                   aria-label="Perfil no LinkedIn"
                   title="LinkedIn"
-                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
+                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-colors duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
                 >
                   <FiLinkedin className="text-lg" />
                 </a>
@@ -150,7 +150,7 @@ export function Hero() {
 
               {/* Card Local — canto superior direito */}
               <div
-                className="absolute -top-8 -right-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-all duration-300 animate-float z-10"
+                className="absolute -top-8 -right-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-colors duration-300 animate-float will-change-transform z-10"
                 style={{ animationDelay: '0s' }}
               >
                 <p className="text-[11px] font-medium text-slate-400 mb-1 flex items-center gap-1">
@@ -165,7 +165,7 @@ export function Hero() {
 
               {/* Card Idiomas — canto inferior esquerdo */}
               <div
-                className="absolute -bottom-8 -left-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-all duration-300 animate-float-2 z-10"
+                className="absolute -bottom-8 -left-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-colors duration-300 animate-float-2 will-change-transform z-10"
                 style={{ animationDelay: '0.35s' }}
               >
                 <p className="text-[11px] font-medium text-slate-400 mb-1 flex items-center gap-1">

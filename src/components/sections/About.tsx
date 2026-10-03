@@ -104,7 +104,7 @@ export function About() {
               <a
                 href={profile.resumePath}
                 download
-                className="inline-flex items-center gap-3 rounded-lg bg-blue-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white transition-all duration-300 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/50 active:scale-95 group focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
+                className="inline-flex items-center gap-3 rounded-lg bg-blue-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-white transition-[background-color,border-color,color,box-shadow,transform] duration-300 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/50 active:scale-95 group focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
                 aria-label="Baixar currículo em PDF"
               >
                 <FiDownload className="transition-transform group-hover:-translate-y-1" />

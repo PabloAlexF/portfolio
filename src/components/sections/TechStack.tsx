@@ -80,7 +80,7 @@ function TechChip({ item, delay }: { item: StackItem; delay: number }) {
 
   return (
     <Reveal delay={delay}>
-      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-700/50 bg-slate-900/30 text-sm font-medium text-slate-300 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 hover:scale-105 group">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-700/50 bg-slate-900/30 text-sm font-medium text-slate-300 transition-[transform,border-color,background-color] duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 hover:scale-105 group">
         {Icon && <Icon className="text-sm text-slate-400 group-hover:text-blue-400 transition-colors" />}
         {item.name}
       </div>

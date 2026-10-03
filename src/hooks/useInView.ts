@@ -1,17 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
+import type { RefObject } from 'react'
 
 interface UseInViewOptions {
   threshold?: number | number[]
-  margin?: string
+  rootMargin?: string
   once?: boolean
 }
 
-export function useInView({
+export function useInView<T extends HTMLElement = HTMLElement>({
   threshold = 0.1,
-  margin = '0px',
+  rootMargin = '0px',
   once = true,
 }: UseInViewOptions = {}) {
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<T>(null)
   const [isInView, setIsInView] = useState(false)
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export function useInView({
           setIsInView(false)
         }
       },
-      { threshold, rootMargin: margin }
+      { threshold, rootMargin }
     )
 
     if (ref.current) {
@@ -38,7 +39,7 @@ export function useInView({
         observer.unobserve(ref.current)
       }
     }
-  }, [threshold, margin, once])
+  }, [threshold, rootMargin, once])
 
-  return { ref, isInView }
+  return { ref: ref as RefObject<T>, isInView }
 }

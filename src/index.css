@@ -74,6 +74,13 @@ a {
   }
 }
 
+@media (scripting: none) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Focus Visible */
 button:focus-visible,
 a:focus-visible,

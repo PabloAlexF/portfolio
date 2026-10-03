@@ -45,7 +45,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 text-slate-400 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
+                className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-700 text-slate-400 transition-colors duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
               >
                 <Icon className="text-base" />
               </a>
