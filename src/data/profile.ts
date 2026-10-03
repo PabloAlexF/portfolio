@@ -13,5 +13,3 @@ export const profile = {
   resumePath: '/curriculo-pablo-andrade.pdf',
   formation: 'Ensino Médio · Cotemig',
 } as const
-
-export type Profile = typeof profile

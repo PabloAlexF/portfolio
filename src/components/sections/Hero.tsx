@@ -2,8 +2,6 @@ import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMapPin, FiGlobe } fro
 import { AvailableBadge, Reveal } from '@/components/ui'
 import { profile } from '@/data'
 
-const hasValue = (v: string) => !v.includes('[')
-
 const S = {
   kw:   'text-sky-400',
   name: 'text-blue-300',
@@ -14,7 +12,6 @@ const S = {
 function CodeWindow() {
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#060b1a] shadow-2xl shadow-blue-900/20">
-      {/* Traffic lights + filename */}
       <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-red-500/70" />
         <span className="h-3 w-3 rounded-full bg-yellow-500/70" />
@@ -40,11 +37,6 @@ export function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const stats = [
-    { value: profile.yearsExp, label: 'de experiência' },
-    { value: profile.projectsCount, label: 'projetos publicados' },
-  ].filter((s) => hasValue(s.value))
-
   return (
     <section
       id="inicio"
@@ -53,7 +45,6 @@ export function Hero() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:items-center">
 
-          {/* ── Left Column ── */}
           <div className="space-y-8">
             <Reveal delay={0}>
               <AvailableBadge />
@@ -62,8 +53,7 @@ export function Hero() {
             <Reveal delay={100}>
               <div className="space-y-6">
                 <p className="text-sm sm:text-base font-medium tracking-wide text-blue-400">
-                  Desenvolvedor Front-end Júnior · React &amp; TypeScript
-                  {hasValue(profile.city) ? ` · ${profile.city}` : ''}
+                  Desenvolvedor Front-end Júnior · React &amp; TypeScript · {profile.city}
                 </p>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-slate-100">
@@ -78,13 +68,11 @@ export function Hero() {
                 </h1>
 
                 <p className="mt-6 text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl">
-                  Desenvolvedor front-end
-                  {hasValue(profile.yearsExp) ? ` com ${profile.yearsExp} de experiência` : ''} em React, TypeScript e Tailwind, focado em interfaces responsivas, acessíveis e performáticas.
+                  Desenvolvedor front-end com {profile.yearsExp} de experiência em React, TypeScript e Tailwind, focado em interfaces responsivas, acessíveis e performáticas.
                 </p>
               </div>
             </Reveal>
 
-            {/* CTA Buttons */}
             <Reveal delay={200} className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={() => scrollToSection('projetos')}
@@ -126,29 +114,25 @@ export function Hero() {
               </div>
             </Reveal>
 
-            {/* Stats — só renderiza se tiver valores reais */}
-            {stats.length > 0 && (
-              <Reveal delay={300} className="flex flex-wrap gap-8 sm:gap-12 pt-6 border-t border-slate-700/50">
-                {stats.map(({ value, label }) => (
-                  <div key={label} className="space-y-1">
-                    <p className="text-3xl sm:text-4xl font-bold text-slate-100">{value}</p>
-                    <p className="text-sm sm:text-base text-slate-400">{label}</p>
-                  </div>
-                ))}
-              </Reveal>
-            )}
+            <Reveal delay={300} className="flex flex-wrap gap-8 sm:gap-12 pt-6 border-t border-slate-700/50">
+              <div className="space-y-1">
+                <p className="text-3xl sm:text-4xl font-bold text-slate-100">{profile.yearsExp}</p>
+                <p className="text-sm sm:text-base text-slate-400">de experiência</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-3xl sm:text-4xl font-bold text-slate-100">{profile.projectsCount}</p>
+                <p className="text-sm sm:text-base text-slate-400">projetos publicados</p>
+              </div>
+            </Reveal>
           </div>
 
-          {/* ── Right Column: Code Window + 2 Floating Cards ── */}
           <Reveal delay={300} className="hidden lg:flex items-center justify-center">
             <div className="relative mx-auto w-full max-w-lg xl:max-w-xl">
 
-              {/* Glow de fundo */}
               <div className="absolute -inset-6 -z-10 rounded-full bg-blue-600/15 blur-3xl" />
 
               <CodeWindow />
 
-              {/* Card Local — canto superior direito */}
               <div
                 className="absolute -top-8 -right-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-colors duration-300 animate-float will-change-transform z-10"
                 style={{ animationDelay: '0s' }}
@@ -163,7 +147,6 @@ export function Hero() {
                 </p>
               </div>
 
-              {/* Card Idiomas — canto inferior esquerdo */}
               <div
                 className="absolute -bottom-8 -left-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-colors duration-300 animate-float-2 will-change-transform z-10"
                 style={{ animationDelay: '0.35s' }}

@@ -36,7 +36,6 @@ export function Contact() {
               delay={100}
               className="relative rounded-2xl border border-blue-500/30 bg-slate-950/50 backdrop-blur-md p-8 sm:p-12 space-y-8"
             >
-              {/* Email */}
               <div className="space-y-3">
                 <p className="text-sm font-medium text-slate-400">E-mail</p>
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -61,7 +60,6 @@ export function Contact() {
                 </div>
               </div>
 
-              {/* Divider */}
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-slate-700/50" />
@@ -71,7 +69,6 @@ export function Contact() {
                 </div>
               </div>
 
-              {/* Social Buttons */}
               <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
                 {socials.map(({ name, icon: Icon, href, label }) => (
                   <a

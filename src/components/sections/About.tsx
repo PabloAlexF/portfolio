@@ -20,13 +20,10 @@ export function About() {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:gap-20 lg:grid-cols-2 lg:items-center">
 
-          {/* Left: Image Card */}
           <Reveal delay={0}>
             <div className="relative aspect-[4/5] max-h-[460px] w-full rounded-2xl overflow-hidden border border-blue-500/20 group">
-              {/* Glow azul */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.22),transparent_60%)]" />
 
-              {/* Grid sutil com fade */}
               <div
                 className="absolute inset-0 opacity-20"
                 style={{
@@ -38,20 +35,12 @@ export function About() {
                 }}
               />
 
-              {/* Iniciais como marca d'água */}
               <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
                 <span className="text-[10rem] font-black text-white/[0.06] leading-none">PA</span>
               </div>
 
-              {/* Quando houver foto real, substituir todo o conteúdo acima por:
-                  <img src="/pablo.jpg" alt="Foto de Pablo Andrade" loading="lazy"
-                    className="h-full w-full object-cover grayscale-[20%] transition duration-500 group-hover:scale-105 group-hover:grayscale-0" />
-              */}
-
-              {/* Hover overlay */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-blue-500/10 transition-opacity duration-300" />
 
-              {/* Legenda */}
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-950/80 to-transparent">
                 <p className="text-sm font-medium text-slate-300">{profile.name}</p>
                 <p className="text-xs text-slate-500">{profile.role}</p>
@@ -59,7 +48,6 @@ export function About() {
             </div>
           </Reveal>
 
-          {/* Right: Content */}
           <div className="space-y-10">
             <Reveal delay={100}>
               <div className="space-y-4">
@@ -73,7 +61,6 @@ export function About() {
               </div>
             </Reveal>
 
-            {/* Details list */}
             <Reveal delay={200}>
               <dl className="space-y-3">
                 {details.map(({ label, value }) => (
@@ -85,7 +72,6 @@ export function About() {
               </dl>
             </Reveal>
 
-            {/* Highlights */}
             <Reveal delay={250}>
               <div className="space-y-2">
                 {highlights.map((item) => (
@@ -99,7 +85,6 @@ export function About() {
               </div>
             </Reveal>
 
-            {/* CTA */}
             <Reveal delay={300}>
               <a
                 href={profile.resumePath}

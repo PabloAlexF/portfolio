@@ -1,47 +1,12 @@
-import { useEffect } from 'react'
 import { FiExternalLink, FiGithub } from 'react-icons/fi'
 import { Reveal } from '@/components/ui'
 import type { Project } from '@/data'
 
 interface ProjectsProps {
-  projects?: Project[]
+  projects: Project[]
 }
 
-const isPlaceholder = (v?: string) => !v || v.includes('[') || v === '#' || v === ''
-
-function isComplete(p: Project) {
-  return (
-    !isPlaceholder(p.title) &&
-    !isPlaceholder(p.description) &&
-    !!p.image &&
-    !isPlaceholder(p.image)
-  )
-}
-
-export function Projects({ projects = [] }: ProjectsProps) {
-  const isDev = import.meta.env.DEV
-
-  const visible = isDev
-    ? projects
-    : projects.filter(isComplete)
-
-  // Aviso único em DEV com campos pendentes
-  useEffect(() => {
-    if (!isDev) return
-    const pending: string[] = []
-    projects.forEach((p) => {
-      if (isPlaceholder(p.title)) pending.push(`[${p.id}] title`)
-      if (isPlaceholder(p.description)) pending.push(`[${p.id}] description`)
-      if (!p.image || isPlaceholder(p.image)) pending.push(`[${p.id}] image`)
-      if (!p.role || isPlaceholder(p.role)) pending.push(`[${p.id}] role`)
-      if (!p.demoUrl || isPlaceholder(p.demoUrl)) pending.push(`[${p.id}] demoUrl`)
-      if (!p.codeUrl || isPlaceholder(p.codeUrl)) pending.push(`[${p.id}] codeUrl`)
-    })
-    if (pending.length > 0) {
-      console.warn('[Portfolio] Campos pendentes nos projetos:\n' + pending.map((f) => `  • ${f}`).join('\n'))
-    }
-  }, [projects, isDev])
-
+export function Projects({ projects }: ProjectsProps) {
   return (
     <section id="projetos" className="py-20 md:py-28 scroll-mt-24">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -56,8 +21,8 @@ export function Projects({ projects = [] }: ProjectsProps) {
           </Reveal>
 
           <div className="space-y-16 lg:space-y-20">
-            {visible.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} isDraft={isDev && !isComplete(project)} />
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
         </div>
@@ -66,27 +31,14 @@ export function Projects({ projects = [] }: ProjectsProps) {
   )
 }
 
-function ProjectCard({
-  project,
-  index,
-  isDraft,
-}: {
-  project: Project
-  index: number
-  isDraft: boolean
-}) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const isEven = index % 2 === 0
-  const showDemo = !!project.demoUrl && !isPlaceholder(project.demoUrl)
-  const showCode = !!project.codeUrl && !isPlaceholder(project.codeUrl)
 
   return (
     <Reveal delay={(index + 1) * 100}>
       <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-2 lg:items-center">
-        {/* Image */}
-        <div
-          className={`group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 ${!isEven ? 'lg:order-2' : ''}`}
-        >
-          {project.image && !isPlaceholder(project.image) ? (
+        <div className={`group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 ${!isEven ? 'lg:order-2' : ''}`}>
+          {project.image ? (
             <img
               src={project.image}
               alt={project.image_alt ?? project.title}
@@ -98,14 +50,8 @@ function ProjectCard({
               <p className="text-xs text-slate-600 tracking-wide">Print em breve</p>
             </div>
           )}
-          {isDraft && (
-            <span className="absolute top-3 left-3 rounded-md bg-amber-500/20 border border-amber-500/40 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-amber-400">
-              Rascunho
-            </span>
-          )}
         </div>
 
-        {/* Content */}
         <div className={`space-y-5 ${!isEven ? 'lg:order-1' : ''}`}>
           <div className="space-y-2">
             <p className="text-6xl sm:text-7xl font-bold text-slate-800/80 select-none">{project.number}</p>
@@ -114,13 +60,13 @@ function ProjectCard({
 
           <p className="text-base sm:text-lg text-slate-400 leading-relaxed">{project.description}</p>
 
-          {project.role && !isPlaceholder(project.role) && (
+          {project.role && (
             <p className="text-sm text-slate-400">
               <span className="font-medium text-slate-300">Meu papel:</span> {project.role}
             </p>
           )}
 
-          {project.metrics && !isPlaceholder(project.metrics) && (
+          {project.metrics && (
             <span className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 border border-blue-500/30 px-4 py-1.5 text-sm font-medium text-blue-300">
               <span className="w-2 h-2 rounded-full bg-blue-400" />
               {project.metrics}
@@ -138,9 +84,9 @@ function ProjectCard({
             ))}
           </div>
 
-          {(showDemo || showCode) && (
+          {(project.demoUrl || project.codeUrl) && (
             <div className="flex flex-wrap gap-3 pt-2">
-              {showDemo && (
+              {project.demoUrl && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
@@ -152,7 +98,7 @@ function ProjectCard({
                   Ver demo
                 </a>
               )}
-              {showCode && (
+              {project.codeUrl && (
                 <a
                   href={project.codeUrl}
                   target="_blank"

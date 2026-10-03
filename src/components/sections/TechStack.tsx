@@ -16,7 +16,7 @@ import { Reveal } from '@/components/ui'
 import type { StackItem } from '@/data'
 
 interface TechStackProps {
-  stack?: StackItem[]
+  stack: StackItem[]
 }
 
 const IconMap = {
@@ -38,7 +38,7 @@ const categoryLabels: Record<string, string> = {
   ferramentas: 'Ferramentas',
 }
 
-export function TechStack({ stack = [] }: TechStackProps) {
+export function TechStack({ stack }: TechStackProps) {
   const categories = ['frameworks', 'estilo', 'ferramentas'] as const
   const grouped = categories.map((cat) => ({
     key: cat,
