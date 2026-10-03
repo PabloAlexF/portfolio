@@ -4,16 +4,14 @@ import { profile } from '@/data'
 
 const hasValue = (v: string) => !v.includes('[')
 
-function CodeWindow() {
-  const lines = [
-    `<span class="text-sky-400">const</span> <span class="text-blue-300">pablo</span> <span class="text-slate-500">=</span> {`,
-    `  role<span class="text-slate-500">:</span> <span class="text-emerald-400">"Front-end Developer"</span>,`,
-    `  stack<span class="text-slate-500">:</span> [<span class="text-emerald-400">"React"</span>, <span class="text-emerald-400">"TypeScript"</span>, <span class="text-emerald-400">"Tailwind"</span>],`,
-    `  location<span class="text-slate-500">:</span> <span class="text-emerald-400">"${profile.city}"</span>,`,
-    `  openToWork<span class="text-slate-500">:</span> <span class="text-sky-400">true</span>, <span class="text-slate-500">// ${profile.regime}</span>`,
-    `}<span class="text-slate-500">;</span>`,
-  ]
+const S = {
+  kw:   'text-sky-400',
+  name: 'text-blue-300',
+  str:  'text-emerald-400',
+  pun:  'text-slate-500',
+}
 
+function CodeWindow() {
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#060b1a] shadow-2xl shadow-blue-900/20">
       {/* Traffic lights + filename */}
@@ -24,11 +22,14 @@ function CodeWindow() {
         <span className="ml-3 font-mono text-xs text-slate-500">pablo.ts</span>
       </div>
 
-      {/* pb-10 reserva espaço para o card inferior não cobrir a última linha */}
-      <pre className="overflow-x-auto whitespace-pre p-6 pb-10 font-mono text-sm leading-7 text-slate-400">
-        <code
-          dangerouslySetInnerHTML={{ __html: lines.join('\n') }}
-        />
+      <pre className="overflow-x-auto px-6 pt-6 pb-16 font-mono text-sm xl:text-base leading-7 text-slate-400">
+        <code>
+          <div><span className={S.kw}>const</span> <span className={S.name}>pablo</span> <span className={S.pun}>=</span> <span className={S.pun}>{'{'}</span></div>
+          <div>{'  '}role<span className={S.pun}>:</span> <span className={S.str}>"Front-end Developer"</span><span className={S.pun}>,</span></div>
+          <div>{'  '}stack<span className={S.pun}>:</span> [<span className={S.str}>"React"</span><span className={S.pun}>,</span> <span className={S.str}>"TypeScript"</span><span className={S.pun}>,</span> <span className={S.str}>"Tailwind"</span>]<span className={S.pun}>,</span></div>
+          <div>{'  '}openToWork<span className={S.pun}>:</span> <span className={S.kw}>true</span><span className={S.pun}>,</span></div>
+          <div><span className={S.pun}>{'}'}</span><span className={S.pun}>;</span></div>
+        </code>
       </pre>
     </div>
   )
@@ -47,7 +48,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-28 pb-8 lg:pt-32 lg:pb-12 scroll-mt-24"
+      className="relative flex justify-center overflow-hidden pt-28 lg:pt-32 pb-8 lg:pb-12 scroll-mt-24"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:items-center">
@@ -61,17 +62,17 @@ export function Hero() {
             <Reveal delay={100}>
               <div className="space-y-6">
                 <p className="text-sm sm:text-base font-medium tracking-wide text-blue-400">
-                  Desenvolvedor Front-end · React &amp; TypeScript
+                  Desenvolvedor Front-end Júnior · React &amp; TypeScript
                   {hasValue(profile.city) ? ` · ${profile.city}` : ''}
                 </p>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-slate-100">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-slate-100">
                   Transformo ideias em experiências digitais que{' '}
                   <span className="relative inline-block">
                     <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-sky-300 to-blue-500 animate-gradient-x">
                       funcionam
                     </span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-sky-400/30 to-blue-600/30 blur-xl -z-10 animate-pulse" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-sky-400/30 to-blue-600/30 blur-xl -z-10" />
                   </span>{' '}
                   na prática.
                 </h1>
@@ -107,7 +108,8 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Perfil no GitHub"
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 text-slate-400 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
+                  title="GitHub"
+                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
                 >
                   <FiGithub className="text-lg" />
                 </a>
@@ -116,7 +118,8 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Perfil no LinkedIn"
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-700 text-slate-400 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
+                  title="LinkedIn"
+                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-all duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
                 >
                   <FiLinkedin className="text-lg" />
                 </a>
@@ -138,7 +141,7 @@ export function Hero() {
 
           {/* ── Right Column: Code Window + 2 Floating Cards ── */}
           <Reveal delay={300} className="hidden lg:flex items-center justify-center">
-            <div className="relative mx-auto w-full max-w-md">
+            <div className="relative mx-auto w-full max-w-lg xl:max-w-xl">
 
               {/* Glow de fundo */}
               <div className="absolute -inset-6 -z-10 rounded-full bg-blue-600/15 blur-3xl" />
@@ -147,7 +150,7 @@ export function Hero() {
 
               {/* Card Local — canto superior direito */}
               <div
-                className="absolute -top-6 -right-4 lg:-right-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-all duration-300 animate-float z-10"
+                className="absolute -top-8 -right-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-all duration-300 animate-float z-10"
                 style={{ animationDelay: '0s' }}
               >
                 <p className="text-[11px] font-medium text-slate-400 mb-1 flex items-center gap-1">
@@ -162,7 +165,7 @@ export function Hero() {
 
               {/* Card Idiomas — canto inferior esquerdo */}
               <div
-                className="absolute -bottom-6 -left-4 lg:-left-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-all duration-300 animate-float-2 z-10"
+                className="absolute -bottom-8 -left-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-all duration-300 animate-float-2 z-10"
                 style={{ animationDelay: '0.35s' }}
               >
                 <p className="text-[11px] font-medium text-slate-400 mb-1 flex items-center gap-1">
