@@ -8,8 +8,7 @@ export const projects: Project[] = [
     description: 'Plataforma de solidariedade comunitária que conecta pessoas que precisam de ajuda com aquelas que podem ajudar.',
     role: 'Front-end completo, integração com API Node.js e autenticação Firebase',
     tags: ['React', 'Node.js', 'Firebase', 'CSS'],
-    // image: '/prints/solidar-brasil.png',
-    // TODO: adicionar print da interface quando disponível
+    image: '/Page1-solidarBrasil.png',
     image_alt: 'Interface da plataforma SolidarBrasil',
     codeUrl: 'https://github.com/PabloAlexF/Solidar-bairro',
   },
