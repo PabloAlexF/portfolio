@@ -1,12 +1,29 @@
+import type { ReactNode, ComponentType } from 'react'
 import { FiArrowRight, FiDownload, FiGithub, FiLinkedin, FiMapPin, FiGlobe } from 'react-icons/fi'
 import { AvailableBadge, Reveal } from '@/components/ui'
 import { profile } from '@/data'
 
-const S = {
-  kw:   'text-sky-400',
-  name: 'text-blue-300',
-  str:  'text-emerald-400',
-  pun:  'text-slate-500',
+function Kw({ children }: { children: ReactNode }) {
+  return <span className="text-sky-400">{children}</span>
+}
+
+function Str({ children }: { children: ReactNode }) {
+  return <span className="text-emerald-400">{children}</span>
+}
+
+function IconLink({ href, label, icon: Icon }: { href: string; label: string; icon: ComponentType<{ className?: string }> }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      title={label}
+      className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-colors duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
+    >
+      <Icon className="text-lg" />
+    </a>
+  )
 }
 
 function CodeWindow() {
@@ -19,13 +36,17 @@ function CodeWindow() {
         <span className="ml-3 font-mono text-xs text-slate-500">pablo.ts</span>
       </div>
 
-      <pre className="overflow-x-auto px-6 pt-6 pb-16 font-mono text-sm xl:text-base leading-7 text-slate-400">
+      <pre className="overflow-x-auto whitespace-pre px-6 pt-6 pb-16 font-mono text-sm xl:text-base leading-7 text-slate-400">
         <code>
-          <div><span className={S.kw}>const</span> <span className={S.name}>pablo</span> <span className={S.pun}>=</span> <span className={S.pun}>{'{'}</span></div>
-          <div>{'  '}role<span className={S.pun}>:</span> <span className={S.str}>"Front-end Developer"</span><span className={S.pun}>,</span></div>
-          <div>{'  '}stack<span className={S.pun}>:</span> [<span className={S.str}>"React"</span><span className={S.pun}>,</span> <span className={S.str}>"TypeScript"</span><span className={S.pun}>,</span> <span className={S.str}>"Tailwind"</span>]<span className={S.pun}>,</span></div>
-          <div>{'  '}openToWork<span className={S.pun}>:</span> <span className={S.kw}>true</span><span className={S.pun}>,</span></div>
-          <div><span className={S.pun}>{'}'}</span><span className={S.pun}>;</span></div>
+          <Kw>const</Kw> pablo = {'{'}
+          {`\n`}
+          {'  '}role: <Str>"Front-end Developer"</Str>,
+          {`\n`}
+          {'  '}stack: [<Str>"React"</Str>, <Str>"TypeScript"</Str>, <Str>"Tailwind"</Str>],
+          {`\n`}
+          {'  '}openToWork: <Kw>true</Kw>,
+          {`\n`}
+          {'}'};
         </code>
       </pre>
     </div>
@@ -40,7 +61,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex justify-center overflow-hidden pt-28 lg:pt-32 pb-8 lg:pb-12 scroll-mt-24"
+      className="relative overflow-hidden pt-28 lg:pt-32 pb-8 lg:pb-12 scroll-mt-24"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:items-center">
@@ -53,22 +74,19 @@ export function Hero() {
             <Reveal delay={100}>
               <div className="space-y-6">
                 <p className="text-sm sm:text-base font-medium tracking-wide text-blue-400">
-                  Desenvolvedor Front-end Júnior · React &amp; TypeScript · {profile.city}
+                  Desenvolvedor Front-end Júnior · React &amp; TypeScript
                 </p>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-slate-100">
                   Transformo ideias em experiências digitais que{' '}
-                  <span className="relative inline-block">
-                    <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-sky-300 to-blue-500 animate-gradient-x">
-                      funcionam
-                    </span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-sky-400/30 to-blue-600/30 blur-xl -z-10" />
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-sky-300 to-blue-500 animate-gradient-x">
+                    funcionam
                   </span>{' '}
                   na prática.
                 </h1>
 
-                <p className="mt-6 text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl">
-                  Desenvolvedor front-end com {profile.yearsExp} de experiência em React, TypeScript e Tailwind, focado em interfaces responsivas, acessíveis e performáticas.
+                <p className="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl">
+                  Construo interfaces responsivas e acessíveis, com atenção a desempenho e clareza.
                 </p>
               </div>
             </Reveal>
@@ -85,32 +103,13 @@ export function Hero() {
                 href={profile.resumePath}
                 download
                 className="inline-flex items-center gap-2 rounded-lg border border-slate-600 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold text-slate-300 transition-[background-color,border-color,color,box-shadow,transform] duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 active:scale-95 focus-visible:ring-2 ring-blue-500 ring-offset-2 ring-offset-slate-950"
-                aria-label="Baixar currículo em PDF"
               >
                 <FiDownload className="text-base" />
                 Baixar currículo
               </a>
               <div className="flex items-center gap-2">
-                <a
-                  href={profile.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Perfil no GitHub"
-                  title="GitHub"
-                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-colors duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
-                >
-                  <FiGithub className="text-lg" />
-                </a>
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Perfil no LinkedIn"
-                  title="LinkedIn"
-                  className="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-slate-700 text-slate-400 transition-colors duration-300 hover:border-blue-500/50 hover:bg-blue-600/10 hover:text-blue-400 focus-visible:ring-2 ring-blue-500"
-                >
-                  <FiLinkedin className="text-lg" />
-                </a>
+                <IconLink href={profile.github} label="GitHub" icon={FiGithub} />
+                <IconLink href={profile.linkedin} label="LinkedIn" icon={FiLinkedin} />
               </div>
             </Reveal>
 
@@ -133,10 +132,7 @@ export function Hero() {
 
               <CodeWindow />
 
-              <div
-                className="absolute -top-8 -right-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-colors duration-300 animate-float will-change-transform z-10"
-                style={{ animationDelay: '0s' }}
-              >
+              <div className="absolute -top-8 -right-8 w-44 rounded-xl border border-white/10 bg-slate-900/90 backdrop-blur-md p-3.5 shadow-lg hover:border-blue-500/50 transition-colors duration-300 animate-float will-change-transform z-10">
                 <p className="text-[11px] font-medium text-slate-400 mb-1 flex items-center gap-1">
                   <FiMapPin className="text-[11px]" /> Local
                 </p>
